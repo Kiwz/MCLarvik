@@ -1,0 +1,21 @@
+name: MCLarvik
+main: net.kiwz.mclarvik.Mclarvik
+version: 1.0
+author: Kiwz
+commands:
+   online:
+      description: Displays who is online
+      usage: /online
+      aliases: [who,list]
+   join:
+      description: Broadcast join-message
+      usage: /join
+      aliases:
+   quit:
+      description: Broadcast quit-message
+      usage: /quit can only contain one name
+      aliases:
+   uppdate:
+      description: Uppdates Server and Ban log
+      usage: /uppdate
+      aliases:
