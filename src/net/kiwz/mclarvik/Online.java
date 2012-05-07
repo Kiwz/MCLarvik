@@ -1,12 +1,44 @@
 package net.kiwz.mclarvik;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Online
-{	
-	public static void getOnlinePlayers(CommandSender sender)
+public class Online implements CommandExecutor
+{
+	private Mclarvik plugin;
+	
+	public Online(Mclarvik plugin)
+	{
+		this.plugin = plugin;
+	}
+	
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
+	{
+		
+		if (cmd.getName().equalsIgnoreCase("online"))
+		{
+			
+			if(sender.hasPermission("mclarvik.online") || sender.hasPermission("mclarvik.*"))
+			{
+				getOnlinePlayers(sender);
+				getName(sender);
+			}
+			
+			else
+			{
+				getOnlinePlayers(sender);
+				getDisplayName(sender);
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	private static void getOnlinePlayers(CommandSender sender)
 	{
 		int maxplayers = Bukkit.getMaxPlayers();
 		int onlinePlayers = 0;
@@ -23,6 +55,7 @@ public class Online
 			
 			if (player != null)
 			{
+				
 				if (player.canSee(playerServerList[i].getPlayer()))
 				{
 					onlinePlayers++;
@@ -34,39 +67,42 @@ public class Online
 				onlinePlayers++;
 			}
 		}
-		String PlayerOfMaxPlayers = "\u00A7e" + onlinePlayers + "/" + maxplayers + ":";
+		String PlayerOfMaxPlayers = Strings.LightYellow + onlinePlayers + "/" + maxplayers + ":";
 		sender.sendMessage(PlayerOfMaxPlayers);
 	}
 	
-	public static void getPlayerListName(CommandSender sender)
+	private static void getName(CommandSender sender)
 	{
 		Player[] playerServerList = Bukkit.getOnlinePlayers();
-		String names = "\u00A7eConnected Players:\u00A76 ";
+		String names = Strings.LightYellow + "Connected Players: " + Strings.Yellow;
 		
 		for (int i = 0; i < playerServerList.length; i++)
 		{
-			if (!names.equals("\u00A7eConnected Players:\u00A76 "))
+			
+			if (!names.equals(Strings.LightYellow + "Connected Players: " + Strings.Yellow))
 			{
 				names += ", ";
 			}
-			if (!playerServerList[i].getPlayerListName().equals
+			
+			if (!playerServerList[i].getName().equals
 			   (playerServerList[i].getDisplayName()))
 			{
-				names += "\u00A73" + playerServerList[i].getPlayerListName() + " (" +
-									 playerServerList[i].getDisplayName() + ")\u00A76";
+				names += Strings.Turquoise + playerServerList[i].getName() + " <" +
+									 playerServerList[i].getDisplayName() + ">" + Strings.Yellow;
 			}
+			
 			else
 			{
-				names += playerServerList[i].getPlayerListName();
+				names += playerServerList[i].getName();
 			}
 		}
 		sender.sendMessage(names);
 	}
 	
-	public static void getDisplayName(CommandSender sender)
+	private static void getDisplayName(CommandSender sender)
 	{
 		Player[] playerServerList = Bukkit.getServer().getOnlinePlayers();
-		String names = "\u00A7eConnected Players:\u00A76 ";
+		String names = Strings.LightYellow + "Connected Players: " + Strings.Yellow;
 		Player player = null;
 		
 		if (sender instanceof Player)
@@ -76,9 +112,11 @@ public class Online
 		
 		for (int i = 0; i < playerServerList.length; i++)
 		{
+			
 			if (player.canSee(playerServerList[i].getPlayer()))
 			{
-				if (!names.equals("\u00A7eConnected Players:\u00A76 "))
+				
+				if (!names.equals(Strings.LightYellow + "Connected Players: " + Strings.Yellow))
 				{
 					names += ", ";
 				}

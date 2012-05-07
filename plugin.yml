@@ -3,19 +3,27 @@ main: net.kiwz.mclarvik.Mclarvik
 version: 1.0
 author: Kiwz
 commands:
+   uppdate:
+      description: Uppdates Server and Ban log
+      usage: /uppdate
+      aliases:
    online:
       description: Displays who is online
       usage: /online
       aliases: [who,list]
-   join:
-      description: Broadcast join-message
-      usage: /join
+   j:
+      description: Join as another player
+      usage: /j
       aliases:
-   quit:
-      description: Broadcast quit-message
-      usage: /quit can only contain one name
+   q:
+      description: Quit as the player you where
+      usage: /q
       aliases:
-   uppdate:
-      description: Uppdates Server and Ban log
-      usage: /uppdate
+   mob:
+      description: Disguise as a mob
+      usage: /mob
+      aliases:
+   test:
+      description: Test command, do not use it!
+      usage: /test
       aliases:
