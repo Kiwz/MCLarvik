@@ -1,5 +1,7 @@
 package net.kiwz.mclarvik;
 
+import java.lang.reflect.Array;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -41,48 +43,48 @@ public class Disguise implements CommandExecutor
 		{
 			
 			//Disguise as another player Commands:
-			if (cmd.getName().equalsIgnoreCase("j"))
+			if (cmd.getName().equalsIgnoreCase("j") && args.length == 1)
 			{
-				
-				if (args.length == 1)
+				if (player.hasPermission("mclarvik.j") || player.hasPermission("mclarvik.*"))
 				{
-					args[0].equals(cmd.getName());
 					
-					if (player.hasPermission("mclarvik.j") || player.hasPermission("mclarvik.*"))
+					boolean NameInUse = false;
+					Player[] playerServerList = Bukkit.getOnlinePlayers();
+					
+					for (int i=0; i < playerServerList.length; i++)
 					{
-						
-						Player[] playerServerList = Bukkit.getOnlinePlayers();
-						for (int i=0; i < playerServerList.length; i++)
+						if (playerServerList[i].getName().equalsIgnoreCase(args[0]))
 						{
-							
-							if (!playerServerList[i].getName().equalsIgnoreCase(args[0]))
-							{
-								
-								if (player.getName() == player.getDisplayName() && !MobDisguiseAPI.isDisguised(player))
-								{
-									Bukkit.getServer().broadcastMessage("\u00A7e" + args[0] + " joined the game.");
-									player.setPlayerListName(args[0]);
-									MobDisguiseAPI.disguisePlayerAsPlayer(player, args[0]);
-									
-								}
-								
-								else if (player.getName() != player.getDisplayName() && MobDisguiseAPI.isDisguised(player))
-								{
-									player.sendMessage("\u00A7cYou are another player! Type </q>");
-								}
-								
-								if (player.getName() == player.getDisplayName() && MobDisguiseAPI.isDisguised(player))
-								{
-									player.sendMessage("\u00A7cYou are a Mob! Type </mob>");
-								}
-							}
-							
-							if (playerServerList[i].getName().equalsIgnoreCase(args[0]))
-							{
-								player.sendMessage(Strings.LightRed + "You cannot be the same as another Online player!");
-							}	
+							NameInUse = true;
 						}
 					}
+					
+					if (NameInUse)
+					{
+						sender.sendMessage(args[0] + " er allerede online!");
+					}
+					
+					if (!NameInUse)
+					{
+						
+						if (player.getName() == player.getDisplayName() && !MobDisguiseAPI.isDisguised(player))
+						{
+							Bukkit.getServer().broadcastMessage("\u00A7e" + args[0] + " joined the game.");
+							player.setPlayerListName(args[0]);
+							MobDisguiseAPI.disguisePlayerAsPlayer(player, args[0]);
+						}
+						
+						else if (player.getName() != player.getDisplayName() && MobDisguiseAPI.isDisguised(player))
+						{
+							player.sendMessage("\u00A7cYou are another player! Type </q>");
+						}
+						
+						else if (player.getName() == player.getDisplayName() && MobDisguiseAPI.isDisguised(player))
+						{
+							player.sendMessage("\u00A7cYou are a Mob! Type </mob>");
+						}
+					}
+
 				}
 				return true;
 			}
@@ -190,3 +192,14 @@ public class Disguise implements CommandExecutor
 		return false;
 	}
 }
+
+/*
+Player[] playerServerList = Bukkit.getOnlinePlayers();
+
+for (int i=0; i < playerServerList.length; i++)
+{
+	if (args[0].equalsIgnoreCase(playerServerList[i].getName()))
+	{
+	sender.sendMessage(args[0] + " is allready logged into this server!");
+	}
+}*/
