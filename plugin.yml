@@ -1,29 +1,44 @@
 name: MCLarvik
-main: net.kiwz.mclarvik.Mclarvik
 version: 1.0
 author: Kiwz
+
+main: net.kiwz.mclarvik.Mclarvik
+
+softdepend: [AdminCMD, ChestShop]
+
 commands:
-   uppdate:
-      description: Uppdates Server and Ban log
-      usage: /uppdate
-      aliases:
-   online:
-      description: Displays who is online
-      usage: /online
-      aliases: [who,list]
-   j:
-      description: Join as another player
-      usage: /j
-      aliases:
-   q:
-      description: Quit as the player you where
-      usage: /q
-      aliases:
-   mob:
-      description: Disguise as a mob
-      usage: /mob
-      aliases:
-   test:
-      description: Test command, do not use it!
-      usage: /test
-      aliases:
+  mcl:
+    description: Prints out information included commands.
+    aliases:
+    permission: mclarvik.info
+    permission-message: You do not have <mclarvik.info> permission!
+    usage: Syntax error! Simply type /<mcl>.
+  mclreload:
+    description: Reloads configs and all other files.
+    aliases: [mclr]
+    permission: mclarvik.reload
+    permission-message: You do not have <mclarvik.reload> permission!
+    usage: Syntax error! Simply type /<mclreload>.
+  mclupdate:
+    description: Updates several log files to FileDir.
+    aliases: [upd, ud]
+    permission: mclarvik.update
+    permission-message: You do not have <mclarvik.update> permission!
+    usage: Syntax error! Simply type /<mclupdate> to update logs.
+
+permissions:
+  mclarvik.*:
+    description: Gives access to all MCLarvik commands.
+    children:
+      mclarvik.info: true
+      mclarvik.reload: true
+      mclarvik.update: true
+  mclarvik.info:
+    description: Prints out information included commands.
+    default: op
+  mclarvik.reload:
+    description: Reloads configs and all other files.
+    default: op
+  mclarvik.update:
+    description: Updates several log files to FileDir.
+    default: op
