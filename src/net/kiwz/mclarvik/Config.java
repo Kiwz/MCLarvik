@@ -36,20 +36,19 @@ public class Config implements CommandExecutor {
 	boolean TownyChat;
 	boolean WarningAndSevere;
 	boolean XtraServerLog;
-	
 	Plugin MCLarvik = Bukkit.getServer().getPluginManager().getPlugin("MCLarvik");
 	FileConfiguration getC = MCLarvik.getConfig();
 	
 	public void saveConfig() {
-	    
-		getC.options().copyDefaults(true);
+		
+	    getC.options().copyDefaults(true);
 		MCLarvik.saveConfig();
+		
 	}
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("mclreload")) {
-			
 			if(sender.hasPermission("mclarvik.reload")) {
 				MCLarvik.reloadConfig();
 				Autobroadcast.getMessages();
@@ -58,16 +57,13 @@ public class Config implements CommandExecutor {
 			}
 			return true;
 		}
-		
 		if (cmd.getName().equalsIgnoreCase("mcl")) {
-			
 			if(sender.hasPermission("mclarvik.info")) {
 				PluginDescriptionFile pdFile = MCLarvik.getDescription();
 				sender.sendMessage(ChatColor.DARK_GREEN + "The [" + pdFile.getName() + "] plugin is running version: " + pdFile.getVersion());
 			}
 			return true;
 		}
-		
 		return false;
 	}
 	

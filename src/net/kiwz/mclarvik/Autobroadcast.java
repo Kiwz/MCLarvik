@@ -16,20 +16,18 @@ public class Autobroadcast implements Runnable {
 	static File messages;
 	static Vector<String> messageList = new Vector<String>();
 	Thread bc;
+	boolean stop = true;
 	
 	public void makeMessageFile() {
 		
 		messages = new File("plugins/MCLarvik/Messages.txt");
-	    
+		
 	    if (!messages.exists())
-	    	
 	    	try {
 	    		messages.createNewFile();
 	    	}
-	    
 	    catch (IOException localIOException) {
 	    }
-	    
 	    bc = new Thread(this, "Broadcaster");
 	    bc.start();
 	}
@@ -40,13 +38,11 @@ public class Autobroadcast implements Runnable {
 		
 		try {
 			Scanner scanner = new Scanner(messages);
-			
 			while (scanner.hasNextLine()) {
 				String in = " " + scanner.nextLine().trim() + ChatColor.WHITE;
 				messageList.add(in);
 	        }
 		}
-		
 		catch (FileNotFoundException localFileNotFoundException) {
 	    }
 	}
@@ -55,35 +51,29 @@ public class Autobroadcast implements Runnable {
 		
 		int i = 0;
 		
-	    while (true)
-	    	
+		while (stop)
 	    	try {
 	    		Config c = new Config();
 	    		c.autoMsg();
 	    		Server server = Bukkit.getServer();
 	    		
-		        if (i < messageList.size()) {
-		        	
+	    		if (i < messageList.size()) {
 		        	String in = c.autoMsgPrefix + ChatColor.WHITE + messageList.get(i);
 		        	String out = in.replaceAll("(&([a-f0-9]))", "\u00A7$2");
-		        	
 		        	if (!c.autoMsgToConsole) {
 		        		for (Player p : server.getOnlinePlayers())
 		        			p.sendMessage(out);
 		        	}
-		        	
 		        	if (c.autoMsgToConsole) {
 		        		server.broadcastMessage(out);
 		        	}
 		        	i++;
 			        Thread.sleep(c.autoMsgDelayInSec * 1000);
 		        }
-	        	
 	        	else {
 		        	i = 0;
 	        	}
 	        }
-	    
 	    catch (InterruptedException localInterruptedException) {	
 	    }
 	}

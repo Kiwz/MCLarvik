@@ -24,36 +24,28 @@ public class PluginsList {
 		list.pos = Bukkit.getServer().getPluginManager().getPlugins().length;
 		
 		if (c.PluginsList) {
-			
 			try {
 				class Line implements Comparable<Line> {
 					String name;
 					String version;
-	
 					Line(String name, String version) {
 						this.name = name;
 						this.version = version;
 					}
-	
 					public int compareTo(Line line) {
 						return this.name.toUpperCase().compareTo(line.name.toUpperCase());
 					}
 				}
-				
 				Line[] lines = new Line[list.pos];
-	
 				for (int i = 0; i < lines.length; i++) {
 					lines[i] = new Line(list.plugin[i].getDescription().getName(),
 										list.plugin[i].getDescription().getVersion());
 				}
-	
 				Arrays.sort(lines);
 				FileOutputStream plugins = new FileOutputStream(c.FileDir + "plugins.html");
 				PrintStream build = new PrintStream(plugins);
-	
 				build.println("<html>");
 				build.println("<body bgcolor='#cccccc'>");
-	
 				for (Line line : lines) {
 					build.println("");
 					build.println("<font size='3' color='#0BA613' face='verdana'>");
@@ -62,7 +54,6 @@ public class PluginsList {
 					build.println("<br />Version: " + line.version + "</font>");
 					build.println("<br />");
 				}
-	
 				build.println("");
 				build.println("<br />");
 				build.println("<br />");
@@ -79,7 +70,6 @@ public class PluginsList {
 				build.println("</html>");
 				build.close();
 			}
-	
 			catch (IOException e) {
 				System.out.println("Error: " + e);
 				System.exit(1);
