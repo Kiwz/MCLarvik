@@ -7,24 +7,30 @@ main: net.kiwz.mclarvik.Mclarvik
 softdepend: [AdminCMD, ChestShop]
 
 commands:
-  mcl:
+  mclinfo:
     description: Prints out information included commands.
-    aliases:
+    aliases: [mcli, mcl]
     permission: mclarvik.info
     permission-message: You do not have <mclarvik.info> permission!
     usage: Syntax error! Simply type /<mcl>.
   mclreload:
-    description: Reloads configs and all other files.
+    description: Reloads this plugin.
     aliases: [mclr]
     permission: mclarvik.reload
     permission-message: You do not have <mclarvik.reload> permission!
     usage: Syntax error! Simply type /<mclreload>.
-  mclupdate:
-    description: Updates several log files to FileDir.
-    aliases: [upd, ud]
-    permission: mclarvik.update
-    permission-message: You do not have <mclarvik.update> permission!
-    usage: Syntax error! Simply type /<mclupdate> to update logs.
+  mclcopy:
+    description: Copy the configurated files to FileDir.
+    aliases: [mclc, fc, filecopy]
+    permission: mclarvik.copy
+    permission-message: You do not have <mclarvik.copy> permission!
+    usage: Syntax error! Simply type /<mclcopy> to copy files.
+  mclgroups:
+    description: Gets groups of players.
+    aliases: [mclg, groups]
+    permission: mclarvik.groups
+    permission-message: You do not have <mclarvik.groups> permission!
+    usage: Syntax error! Simply type /<mclgroups> to get groups.
 
 permissions:
   mclarvik.*:
@@ -37,8 +43,11 @@ permissions:
     description: Prints out information included commands.
     default: op
   mclarvik.reload:
-    description: Reloads configs and all other files.
+    description: Reloads this plugin.
     default: op
-  mclarvik.update:
-    description: Updates several log files to FileDir.
+  mclarvik.copy:
+    description: Copy the configurated files to FileDir.
+    default: op
+  mclarvik.groups:
+    description: Create a user.txt file that contains groups of players.
     default: op

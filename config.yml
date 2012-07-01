@@ -5,68 +5,73 @@
 #########################################################################################
 ######							Commands and Permissions:						   ######
 ###																					  ###
-#		  </mcl reload> <mclarvik.reload> (Reloads all configs and message.txt)			#
-#		</mcl update> <mclarvik.update> (Updates all the files in "FilesToCopy")		#
-#			   </mcl automsg> <mclarvik.automsg> (Toggle AutoMsg on/off)				#
+#		</mcl> <mclarvik.info> (Displayes some information about this plugin)			#
+#		  		</mclreload> <mclarvik.reload> (Reloads this plugin)					#
+#		 </mclcopy> <mclarvik.copy> (Updates all the files in "FilesToCopy")			#
 ###																					  ###
 #########################################################################################
 #########################################################################################
 
 #Auto Message configs.
-autoMsgDelayInSec: 300
+autoMsgDelayInMin: 15
 autoMsgToConsole: false
-autoMsgPrefix: '&d[AutoMessage]'
+autoMsgPrefix: '&d[Viktig Beskjed] '
 
-#Your server will FAIL to start if FileDir is not a VALID path!
-#Just make the folders before using this plugin.
-#If you want to save files in a folder inside your server, you can start with plugins/
-#If you want to save files in a folder outside your server, you need to start with C:/whatever/you/like/
-FileDir: plugins/MCLarvik/
+#FileDir need to be a valid directory.
+#If you want to save files in a folder inside your server, you can start with plugins/whatever/you/like
+#If you want to save files in a folder outside your server, you need to start with C:/whatever/you/like
+FileDir: plugins/dynmap/web/admin
 
 #If you want to make a list of all your plugins included version.
-#Created only upon server start and will be saved to the FileDir.
-PluginsList: false
+#Created only upon server start/reload and will be saved to the FileDir.
+PluginsList: true
 
-#Time between File copy in minutes (do NOT set this to 0)
-AutoFileCopy: false
-FileCopyDelayInMin: 60
+#Time between File copy in minutes. Set to 0 if you want to disable this.
+LogFileCopyTime: false
+FileCopyDelayInMin: 10
 
-#What files to copy. I recommend not to copy large files (large > 10MB)
+#What files to copy. I recommend not to copy large files (large > 100MB)
 FilesToCopy:
-- banned-players.txt
-- banned-ips.txt
+- plugins/AdminCmd/banned.yml
+- plugins/NoCheatPlus/nocheatplus.log
+- plugins/ChestShop/ChestShop.log
+- plugins/Towny/logs/towny.log
+- plugins/Towny/logs/money.csv
+- server.log
 
 #New name of the copied files (the order is important)
 FilesToSave:
 - bans.txt
-- bans-ip.txt
+- nocheatplus.txt
+- chestshop.txt
+- town-nation.txt
+- towny-money.txt
+- server.txt
 
-#If you want users.txt file that contains group-sorted list of players.
-#This will only work if you use bPermission, and is updated same time as FilesToCopy.
-GetGroups: false
+#If you want users.txt file that contains group-sorted list of players from bPermissions.
+#Set RefreshGroupInMin to 0 if you want this to be disabeld.
+LogGetGroupTime: false
+RefreshGroupInMin: 10
 WorldToGetGroupFrom: world
 Groups:
-- vip
-- mod
-- admin
+- offiser
+- hjelper
+- builder
 
 #Date and Time format, see http://docs.oracle.com/javase/1.4.2/docs/api/java/text/SimpleDateFormat.html
-TimeFormat: YYYY-MM-dd HH:mm:ss
+TimeFormat: yyyy-MM-dd HH:mm:ss
 
 #List of Commands to log in commands1.txt
-UseCmdToLog1: false
 CmdToLog1:
 - /spawn
 - /gamemode
 
 #List of Commands to log in commands2.txt
-UseCmdToLog2: false
 CmdToLog2:
 - /god
 - /heal
 
 #List of Private messages to log in private-msg.txt
-UsePrivMsgToLog: false
 PrivMsgToLog:
 - /msg
 - /r
@@ -77,8 +82,9 @@ Chat: false
 #Set to true if you want to log all Towny chat channels to towny-chat.txt
 TownyChat: false
 
-#Set to true if you want to log all [Warning] and [Severe] messages to warning.txt
-WarningAndSevere: false
-
-#Set to true if you want to have a xtra real-time copy of the server.log
-XtraServerLog: false
+#Logg different levels in different logs
+Full-Logger: true
+Fine-Logger: false
+Info-Logger: false
+Warning-Logger: true
+Severe-Logger: true
