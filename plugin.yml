@@ -4,18 +4,25 @@ author: Kiwz
 
 main: net.kiwz.mclarvik.Mclarvik
 
-softdepend: [AdminCMD, ChestShop]
+loadbefore: [bPermissions, Orebfuscator, WorldBorder]
 
 commands:
+  mcltest:
   mclinfo:
     description: Prints out information included commands.
     aliases: [mcli, mcl]
     permission: mclarvik.info
     permission-message: You do not have <mclarvik.info> permission!
     usage: Syntax error! Simply type /<mcl>.
+  mclrestart:
+    description: Restarts the whole server.
+    aliases: [mclrs]
+    permission: mclarvik.restart
+    permission-message: You do not have <mclarvik.restart> permission!
+    usage: Syntax error! Simply type /<mclrestart>.
   mclreload:
     description: Reloads this plugin.
-    aliases: [mclr]
+    aliases: [mclrl]
     permission: mclarvik.reload
     permission-message: You do not have <mclarvik.reload> permission!
     usage: Syntax error! Simply type /<mclreload>.
@@ -31,16 +38,28 @@ commands:
     permission: mclarvik.groups
     permission-message: You do not have <mclarvik.groups> permission!
     usage: Syntax error! Simply type /<mclgroups> to get groups.
+  mclmoney:
+    description: Generate a list of all bank accounts.
+    aliases: [mclm, mlist, mb]
+    permission: mclarvik.money
+    permission-message: You do not have <mclarvik.groups> permission!
+    usage: Syntax error! Simply type /<mclmoney> to generate a list of bank accounts.
 
 permissions:
   mclarvik.*:
     description: Gives access to all MCLarvik commands.
     children:
       mclarvik.info: true
+      mclarvik.restart: true
       mclarvik.reload: true
-      mclarvik.update: true
+      mclarvik.copy: true
+      mclarvik.groups: true
+      mclarvik.money: true
   mclarvik.info:
     description: Prints out information included commands.
+    default: op
+  mclarvik.restart:
+    description: Restarts the whole server.
     default: op
   mclarvik.reload:
     description: Reloads this plugin.
@@ -50,4 +69,7 @@ permissions:
     default: op
   mclarvik.groups:
     description: Create a user.txt file that contains groups of players.
+    default: op
+  mclarvik.money:
+    description: Generate a list of all bank accounts.
     default: op

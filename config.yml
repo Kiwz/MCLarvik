@@ -1,36 +1,11 @@
-#########################################################################################
-##############################  MCLarvik configurations  ################################
-##################################  Created by Kiwz  ####################################
-#########################################################################################
-#########################################################################################
-######							Commands and Permissions:						   ######
-###																					  ###
-#		</mcl> <mclarvik.info> (Displayes some information about this plugin)			#
-#		  		</mclreload> <mclarvik.reload> (Reloads this plugin)					#
-#		 </mclcopy> <mclarvik.copy> (Updates all the files in "FilesToCopy")			#
-###																					  ###
-#########################################################################################
-#########################################################################################
-
-#Auto Message configs.
 autoMsgDelayInMin: 15
 autoMsgToConsole: false
 autoMsgPrefix: '&d[Viktig Beskjed] '
-
-#FileDir need to be a valid directory.
-#If you want to save files in a folder inside your server, you can start with plugins/whatever/you/like
-#If you want to save files in a folder outside your server, you need to start with C:/whatever/you/like
+RestartTimeInHours: 6
 FileDir: plugins/dynmap/web/admin
-
-#If you want to make a list of all your plugins included version.
-#Created only upon server start/reload and will be saved to the FileDir.
 PluginsList: true
-
-#Time between File copy in minutes. Set to 0 if you want to disable this.
-LogFileCopyTime: false
 FileCopyDelayInMin: 10
-
-#What files to copy. I recommend not to copy large files (large > 100MB)
+LogFileCopyTime: false
 FilesToCopy:
 - plugins/AdminCmd/banned.yml
 - plugins/NoCheatPlus/nocheatplus.log
@@ -38,8 +13,6 @@ FilesToCopy:
 - plugins/Towny/logs/towny.log
 - plugins/Towny/logs/money.csv
 - server.log
-
-#New name of the copied files (the order is important)
 FilesToSave:
 - bans.txt
 - nocheatplus.txt
@@ -47,9 +20,6 @@ FilesToSave:
 - town-nation.txt
 - towny-money.txt
 - server.txt
-
-#If you want users.txt file that contains group-sorted list of players from bPermissions.
-#Set RefreshGroupInMin to 0 if you want this to be disabeld.
 LogGetGroupTime: false
 RefreshGroupInMin: 10
 WorldToGetGroupFrom: world
@@ -57,32 +27,31 @@ Groups:
 - offiser
 - hjelper
 - builder
-
-#Date and Time format, see http://docs.oracle.com/javase/1.4.2/docs/api/java/text/SimpleDateFormat.html
+AccountBackuppOnServerStart: true
 TimeFormat: yyyy-MM-dd HH:mm:ss
-
-#List of Commands to log in commands1.txt
 CmdToLog1:
-- /spawn
-- /gamemode
-
-#List of Commands to log in commands2.txt
+- /town add *
+- /town kick *
+- /town assistant *
+- /t add *
+- /t kick *
+- /t assistant *
 CmdToLog2:
-- /god
-- /heal
-
-#List of Private messages to log in private-msg.txt
+- /money pay *
+- /town deposit *
+- /town withdraw *
+- /t deposit *
+- /t withdraw *
+- /nation deposit *
+- /nation withdraw *
+- /n deposit *
+- /n withdraw *
 PrivMsgToLog:
+- /message
 - /msg
+- /reply
 - /r
-
-#Set to true if you want to log chat to chat.txt
-Chat: false
-
-#Set to true if you want to log all Towny chat channels to towny-chat.txt
-TownyChat: false
-
-#Logg different levels in different logs
+Chat: true
 Full-Logger: true
 Fine-Logger: false
 Info-Logger: false

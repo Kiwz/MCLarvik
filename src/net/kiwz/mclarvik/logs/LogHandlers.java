@@ -13,6 +13,7 @@ import org.bukkit.plugin.Plugin;
 public class LogHandlers {
 
 	private static Logger log = Logger.getLogger("Minecraft");
+	private static Logger global = Logger.getLogger("");
 	private static Plugin mcLarvik = Bukkit.getServer().getPluginManager().getPlugin("MCLarvik");
 
 	public static void log() {
@@ -50,8 +51,9 @@ public class LogHandlers {
 		} catch (IOException e) {
 		}
 		log.addHandler(fullHandler);
+		global.addHandler(fullHandler);
 		fullHandler.setLevel(Level.ALL);
-		fullHandler.setFormatter(new DefaultFormatter());
+		fullHandler.setFormatter(new FullFormatter());
 	}
 	
 	private static void fine() {
@@ -63,6 +65,7 @@ public class LogHandlers {
 		} catch (IOException e) {
 		}
 		log.addHandler(fineHandler);
+		global.addHandler(fineHandler);
 		fineHandler.setLevel(Level.FINEST);
 		fineHandler.setFormatter(new FineFormatter());
 	}
@@ -76,6 +79,7 @@ public class LogHandlers {
 		} catch (IOException e) {
 		}
 		log.addHandler(infoHandler);
+		global.addHandler(infoHandler);
 		infoHandler.setLevel(Level.INFO);
 		infoHandler.setFormatter(new InfoFormatter());
 	}
@@ -89,6 +93,7 @@ public class LogHandlers {
 		} catch (IOException e) {
 		}
 		log.addHandler(warningHandler);
+		global.addHandler(warningHandler);
 		warningHandler.setLevel(Level.WARNING);
 		warningHandler.setFormatter(new WarningFormatter());
 	}
@@ -102,8 +107,8 @@ public class LogHandlers {
 		} catch (IOException e) {
 		}
 		log.addHandler(severeHandler);
+		global.addHandler(severeHandler);
 		severeHandler.setLevel(Level.SEVERE);
-		severeHandler.setFormatter(new DefaultFormatter());
+		severeHandler.setFormatter(new SevereFormatter());
 	}
-
 }
