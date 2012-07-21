@@ -54,7 +54,7 @@ public class InfoFormatter extends Formatter {
 		String line4 = time + " [INFO] This server is running CraftBukkit version " + bVersion +
 				" (Implementing API version " + apiVersion + ")" + n;
 		String line5 = time + " [INFO] [MCLarvik] Loading MCLarvik v" + mclVersion + n;
-		String head = line1 + line2 + line3 + line4 + line5; 
+		String head = line1 + line2 + line3 + line4 + line5;
 		return head;
 	}
 }

@@ -7,6 +7,7 @@ import net.kiwz.mclarvik.listeners.CommandListener;
 import net.kiwz.mclarvik.logs.LogHandlers;
 import net.kiwz.mclarvik.threads.RunAM;
 import net.kiwz.mclarvik.threads.RunFC;
+import net.kiwz.mclarvik.threads.RunMB;
 import net.kiwz.mclarvik.threads.RunPG;
 import net.kiwz.mclarvik.threads.RunSS;
 import net.kiwz.mclarvik.threads.Threads;
@@ -26,7 +27,6 @@ public class Mclarvik extends JavaPlugin {
 	private PluginManager pm = Bukkit.getServer().getPluginManager();
 	private RunAM abm;
 	private RunFC fc;
-	private RunPG mb;
 	private RunPG pg;
 	private RunSS ss;
 	
@@ -51,21 +51,14 @@ public class Mclarvik extends JavaPlugin {
 	    pm.registerEvents(chat, this);
 	    CommandListener cmd = new CommandListener();
 	    pm.registerEvents(cmd, this);
+	    this.getServer().getScheduler().scheduleAsyncDelayedTask(this, new RunMB(), 1);
+	    //this.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Test(), 1, 1);
 	    
 	    PluginsList.build();
 	    abm = Threads.threadABM();
 	    fc = Threads.threadFC();
-	    mb = Threads.threadPG();
 	    pg = Threads.threadPG();
 	    ss = Threads.threadSS();
-	    /*denne if'en funker ikke fordi register, towny og economy ikke er enabled enda!
-		if (this.getConfig().getBoolean("AccountBackuppOnServerStart", true)) {
-			MoneyBackupp mb = new MoneyBackupp();
-			mb.nationHoldings();
-			mb.townHoldings();
-			mb.playerHoldings();
-			mb.nationAndTownWithSmallAmountOfMoney();
-		}*/
 		log.info(name + "ENABLED!");
 	}
 
@@ -75,9 +68,6 @@ public class Mclarvik extends JavaPlugin {
 		}
 		if (fc != null) {
 			fc.setGo(false);
-		}
-		if (mb != null) {
-			mb.setGo(false);
 		}
 		if (pg != null) {
 			pg.setGo(false);

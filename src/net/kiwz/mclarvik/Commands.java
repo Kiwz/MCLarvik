@@ -91,9 +91,9 @@ public class Commands implements CommandExecutor {
 			MoneyBackupp mb = new MoneyBackupp();
 			mb.nationHoldings();
 			mb.townHoldings();
-			mb.playerHoldings();
 			mb.nationAndTownWithSmallAmountOfMoney();
-			String error = "This command is disabled since you arent using any Economy plugin!";
+			mb.playerHoldings();
+			String error = "This command is disabled since you arent using any Economy plugin AND Register!";
 			String message = "A backupp of all economy accounts was made in: " + (System.currentTimeMillis() - timeStart) + "ms.";
 			if (sender instanceof Player) {
 				if (!register || !hasMethod) {
@@ -115,7 +115,7 @@ public class Commands implements CommandExecutor {
 		}
 		
 		if (cmd.getName().equalsIgnoreCase("mcltest")) {
-				sender.sendMessage("Dette er 'test' kommandoen til mclarvik!");
+			sender.sendMessage("Dette er 'test' kommandoen til mclarvik!");
 			return true;
 		}
 		return false;
