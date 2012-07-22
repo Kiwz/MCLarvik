@@ -22,7 +22,7 @@ public class MoneyBackupp {
 	//private boolean hasMethod = Methods.hasMethod();
 	private Plugin mcLarvik = Bukkit.getServer().getPluginManager().getPlugin("MCLarvik");
 	private String fileDir = mcLarvik.getConfig().getString("FileDir", "plugins/dynmap/web/admin") + "/backupp/";
-	private DecimalFormat form = new DecimalFormat("2");
+	private DecimalFormat form = new DecimalFormat("#");
 	
 	public void nationHoldings() {
 		
