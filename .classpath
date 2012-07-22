@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="C:/Users/Thomas/git/Bukkit/target/bukkit-1.2.5-R4.1-SNAPSHOT.jar" sourcepath="C:/Users/Thomas/git/Bukkit/src"/>
+	<classpathentry kind="lib" path="C:/Users/Thomas/git/CraftBukkit/target/craftbukkit-1.2.5-R4.1-SNAPSHOT.jar" sourcepath="C:/Users/Thomas/git/CraftBukkit"/>
+	<classpathentry kind="lib" path="C:/Users/Thomas/git/Register/Register.jar" sourcepath="C:/Users/Thomas/git/Register"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
