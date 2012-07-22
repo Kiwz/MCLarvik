@@ -1,0 +1,59 @@
+autoMsgDelayInMin: 15
+autoMsgToConsole: false
+autoMsgPrefix: '&d[Viktig Beskjed] '
+RestartTimeInHours: 6
+FileDir: plugins/dynmap/web/admin
+PluginsList: true
+FileCopyDelayInMin: 10
+LogFileCopyTime: false
+FilesToCopy:
+- plugins/AdminCmd/banned.yml
+- plugins/NoCheatPlus/nocheatplus.log
+- plugins/ChestShop/ChestShop.log
+- plugins/Towny/logs/towny.log
+- plugins/Towny/logs/money.csv
+- server.log
+FilesToSave:
+- bans.txt
+- nocheatplus.txt
+- chestshop.txt
+- town-nation.txt
+- towny-money.txt
+- server.txt
+LogGetGroupTime: false
+RefreshGroupInMin: 10
+WorldToGetGroupFrom: world
+Groups:
+- offiser
+- hjelper
+- builder
+AccountBackuppOnServerStart: true
+TimeFormat: yyyy-MM-dd HH:mm:ss
+CmdToLog1:
+- /town add *
+- /town kick *
+- /town assistant *
+- /t add *
+- /t kick *
+- /t assistant *
+CmdToLog2:
+- /money pay *
+- /town deposit *
+- /town withdraw *
+- /t deposit *
+- /t withdraw *
+- /nation deposit *
+- /nation withdraw *
+- /n deposit *
+- /n withdraw *
+PrivMsgToLog:
+- /message
+- /msg
+- /reply
+- /r
+Chat: true
+Full-Logger: true
+Fine-Logger: false
+Info-Logger: false
+Warning-Logger: true
+Severe-Logger: true
