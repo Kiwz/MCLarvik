@@ -53,6 +53,7 @@ public class Mclarvik extends JavaPlugin {
 	    CommandListener cmd = new CommandListener();
 	    pm.registerEvents(cmd, this);
 	    this.getServer().getScheduler().scheduleAsyncDelayedTask(this, new RunMB(), 1);
+	    //Next line is for the online players graph
 	    this.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new OnlinePlayers(), 200, 200);
 	    
 	    PluginsList.build();
