@@ -13,6 +13,7 @@ import net.kiwz.mclarvik.threads.RunSS;
 import net.kiwz.mclarvik.threads.Threads;
 import net.kiwz.mclarvik.utils.ConfigHeader;
 import net.kiwz.mclarvik.utils.MakeFolders;
+import net.kiwz.mclarvik.utils.OnlinePlayers;
 import net.kiwz.mclarvik.utils.PluginsList;
 
 import org.bukkit.Bukkit;
@@ -52,7 +53,7 @@ public class Mclarvik extends JavaPlugin {
 	    CommandListener cmd = new CommandListener();
 	    pm.registerEvents(cmd, this);
 	    this.getServer().getScheduler().scheduleAsyncDelayedTask(this, new RunMB(), 1);
-	    //this.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Test(), 1, 1);
+	    this.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new OnlinePlayers(), 200, 200);
 	    
 	    PluginsList.build();
 	    abm = Threads.threadABM();
