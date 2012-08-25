@@ -1,75 +1,75 @@
-name: MCLarvik
+name: LarvikGaming
 version: 1.0
 author: Kiwz
 
-main: net.kiwz.mclarvik.Mclarvik
+main: net.kiwz.larvikgaming.LarvikGaming
 
 loadbefore: [bPermissions, Orebfuscator, WorldBorder]
 
 commands:
-  mcltest:
-  mclinfo:
+  lgtest:
+  lginfo:
     description: Prints out information included commands.
-    aliases: [mcli, mcl]
-    permission: mclarvik.info
-    permission-message: You do not have <mclarvik.info> permission!
-    usage: Syntax error! Simply type /<mcl>.
-  mclrestart:
+    aliases: [lgi, lg]
+    permission: larvikgaming.info
+    permission-message: You do not have <larvikgaming.info> permission!
+    usage: Syntax error! Simply type /<lg>.
+  lgrestart:
     description: Restarts the whole server.
-    aliases: [mclrs]
-    permission: mclarvik.restart
-    permission-message: You do not have <mclarvik.restart> permission!
-    usage: Syntax error! Simply type /<mclrestart>.
-  mclreload:
+    aliases: [lgrs]
+    permission: larvikgaming.restart
+    permission-message: You do not have <larvikgaming.restart> permission!
+    usage: Syntax error! Simply type /<lgrestart>.
+  lgreload:
     description: Reloads this plugin.
-    aliases: [mclrl]
-    permission: mclarvik.reload
-    permission-message: You do not have <mclarvik.reload> permission!
-    usage: Syntax error! Simply type /<mclreload>.
-  mclcopy:
+    aliases: [lgrl]
+    permission: larvikgaming.reload
+    permission-message: You do not have <larvikgaming.reload> permission!
+    usage: Syntax error! Simply type /<lgreload>.
+  lgcopy:
     description: Copy the configurated files to FileDir.
-    aliases: [mclc, fc, filecopy]
-    permission: mclarvik.copy
-    permission-message: You do not have <mclarvik.copy> permission!
-    usage: Syntax error! Simply type /<mclcopy> to copy files.
-  mclgroups:
+    aliases: [lgc, fc, filecopy]
+    permission: larvikgaming.copy
+    permission-message: You do not have <larvikgaming.copy> permission!
+    usage: Syntax error! Simply type /<lgcopy> to copy files.
+  lggroups:
     description: Gets groups of players.
-    aliases: [mclg, groups]
-    permission: mclarvik.groups
-    permission-message: You do not have <mclarvik.groups> permission!
-    usage: Syntax error! Simply type /<mclgroups> to get groups.
-  mclmoney:
+    aliases: [lgg, groups]
+    permission: larvikgaming.groups
+    permission-message: You do not have <larvikgaming.groups> permission!
+    usage: Syntax error! Simply type /<lggroups> to get groups.
+  lgmoney:
     description: Generate a list of all bank accounts.
-    aliases: [mclm, mlist, mb]
-    permission: mclarvik.money
-    permission-message: You do not have <mclarvik.groups> permission!
-    usage: Syntax error! Simply type /<mclmoney> to generate a list of bank accounts.
+    aliases: [lgm, mlist, mb]
+    permission: larvikgaming.money
+    permission-message: You do not have <larvikgaming.groups> permission!
+    usage: Syntax error! Simply type /<lgmoney> to generate a list of bank accounts.
 
 permissions:
-  mclarvik.*:
-    description: Gives access to all MCLarvik commands.
+  larvikgaming.*:
+    description: Gives access to all LarvikGaming commands.
     children:
-      mclarvik.info: true
-      mclarvik.restart: true
-      mclarvik.reload: true
-      mclarvik.copy: true
-      mclarvik.groups: true
-      mclarvik.money: true
-  mclarvik.info:
+      larvikgaming.info: true
+      larvikgaming.restart: true
+      larvikgaming.reload: true
+      larvikgaming.copy: true
+      larvikgaming.groups: true
+      larvikgaming.money: true
+  larvikgaming.info:
     description: Prints out information included commands.
     default: op
-  mclarvik.restart:
+  larvikgaming.restart:
     description: Restarts the whole server.
     default: op
-  mclarvik.reload:
+  larvikgaming.reload:
     description: Reloads this plugin.
     default: op
-  mclarvik.copy:
+  larvikgaming.copy:
     description: Copy the configurated files to FileDir.
     default: op
-  mclarvik.groups:
+  larvikgaming.groups:
     description: Create a user.txt file that contains groups of players.
     default: op
-  mclarvik.money:
+  larvikgaming.money:
     description: Generate a list of all bank accounts.
     default: op
